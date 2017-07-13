@@ -54,13 +54,20 @@ public class Main {
 
         String answer = "REJEITA";
         State current = states.get(0);
-        for(char letter : scanner.nextLine().toCharArray()) {
-            // Apagar comentario pra ver caminho percorrido
-            System.out.println(current.getName());
-            current = current.read(letter);
+        boolean end = false;
+        while (!end) {
+            for(char letter : scanner.nextLine().toCharArray()) {
+                if(letter == 'q') {
+                    end = true;
+                    break;
+                }
+                // Apagar comentario pra ver caminho percorrido
+                //System.out.println(current.getName());
+                current = current.read(letter);
+            }
         }
         // Apagar comentario pra ver caminho percorrido
-        System.out.println(current.getName());
+        //System.out.println(current.getName());
         if(current.isFinal()) {
             answer = "ACEITA";
         }
