@@ -31,10 +31,25 @@ public class Main {
         int numOfRules = scanner.nextInt();
         scanner.nextLine();
         String[] rule;
+        boolean isCharIndexed = true;
+        String[] rules = new String[numOfRules];
         for(int i = 0; i < numOfRules; i++) {
-            rule = scanner.nextLine().split(",");
-            searchForState(rule[0])
-                    .addRule(rule[1].charAt(0), searchForState(rule[2]));
+            rules[i] = scanner.nextLine();
+            rule = rules[i].split(",");
+            if(rule[1].matches("[^0-9]") || Integer.valueOf(rule[1]) < 10) {
+                isCharIndexed = false;
+            }
+        }
+        for(int i = 0; i < numOfRules; i++) {
+            rule = rules[i].split(",");
+            if(isCharIndexed) {
+                searchForState(rule[0])
+                        .addRule((Integer.valueOf(rule[1])), searchForState(rule[2]));
+            } else {
+                searchForState(rule[0])
+                        .addRule(rule[1].charAt(0), searchForState(rule[2]));
+            }
+
         }
 
         String answer = "REJEITA";

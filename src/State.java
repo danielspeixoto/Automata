@@ -23,6 +23,10 @@ public class State {
         rules.put(letter, state);
     }
 
+    public void addRule(int letter, State state) {
+        rules.put((char)letter, state);
+    }
+
     public String getName() {
         return name;
     }
