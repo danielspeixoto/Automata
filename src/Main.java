@@ -62,12 +62,12 @@ public class Main {
                     break;
                 }
                 // Apagar comentario pra ver caminho percorrido
-                //System.out.println(current.getName());
+                System.out.println(current.getName());
                 current = current.read(letter);
             }
         }
         // Apagar comentario pra ver caminho percorrido
-        //System.out.println(current.getName());
+        System.out.println(current.getName());
         if(current.isFinal()) {
             answer = "ACEITA";
         }
