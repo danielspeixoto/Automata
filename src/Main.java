@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        System.out.println((int)'\n');
         int numOfStates = scanner.nextInt();
         scanner.nextLine();
         states = new ArrayList<>();
@@ -56,23 +56,25 @@ public class Main {
         State current = states.get(0);
         boolean end = false;
         int iterations = 0;
+        String line;
         while (!end) {
-            if(iterations > 0) {
-                current = current.read('\n');
+            line = scanner.nextLine();
+            if(iterations > 0 && !(line.length() == 1 && line.charAt(0) == 'q')) {
+                current = current.read((char)32);
             }
-            for(char letter : scanner.nextLine().toCharArray()) {
+            for(char letter : line.toCharArray()) {
                 if(letter == 'q') {
                     end = true;
                     break;
                 }
                 // Apagar comentario pra ver caminho percorrido
-                System.out.println(current.getName());
+                // System.out.println(current.getName());
                 current = current.read(letter);
             }
             iterations++;
         }
         // Apagar comentario pra ver caminho percorrido
-        System.out.println(current.getName());
+        // System.out.println(current.getName());
         if(current.isFinal()) {
             answer = "ACEITA";
         }
