@@ -55,7 +55,11 @@ public class Main {
         String answer = "REJEITA";
         State current = states.get(0);
         boolean end = false;
+        int iterations = 0;
         while (!end) {
+            if(iterations > 0) {
+                current = current.read('\n');
+            }
             for(char letter : scanner.nextLine().toCharArray()) {
                 if(letter == 'q') {
                     end = true;
@@ -65,6 +69,7 @@ public class Main {
                 System.out.println(current.getName());
                 current = current.read(letter);
             }
+            iterations++;
         }
         // Apagar comentario pra ver caminho percorrido
         System.out.println(current.getName());
